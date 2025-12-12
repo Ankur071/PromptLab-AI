@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "PromptLabUI/package.json",
+      "src": "PromptLab UI/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist/promptlab-ai/browser"
