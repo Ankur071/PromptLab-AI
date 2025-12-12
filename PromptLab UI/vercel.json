@@ -1,6 +1,6 @@
 {
     "buildCommand": "npm run build",
-    "outputDirectory": "dist/promptlab-ui/browser",
+    "outputDirectory": "dist/promptlab-ai/browser",
     "framework": "angular",
     "rewrites": [
         {
