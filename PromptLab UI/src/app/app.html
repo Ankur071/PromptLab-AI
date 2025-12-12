@@ -1,0 +1,101 @@
+<div class="app-container">
+  <!-- Header with Theme Toggle -->
+  <header class="app-header">
+    <div class="brand">
+      <img src="promptlab-logo.png" alt="PromptLab AI" class="brand-logo" />
+      <h1>PromptLab AI</h1>
+    </div>
+    <p-button [icon]="isDarkMode() ? 'pi pi-sun' : 'pi pi-moon'" [rounded]="true" [text]="true" severity="secondary"
+      (onClick)="toggleTheme()" />
+  </header>
+
+  <!-- Shared Prompt Section -->
+  <div class="prompt-section">
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <i class="pi pi-comment"></i>
+        <span>Enter Your Prompt</span>
+      </div>
+      <div class="prompt-content">
+        <textarea pTextarea [autoResize]="true" rows="4"
+          placeholder="Enter a prompt to compare responses across all models..." [ngModel]="sharedPrompt()"
+          (ngModelChange)="onPromptChange($event)" [disabled]="isAnyLoading()" class="prompt-textarea"></textarea>
+        <button type="button" class="compare-btn" [disabled]="isSubmitDisabled()" (click)="handleSubmit()">
+          @if (isAnyLoading()) {
+          <i class="pi pi-spin pi-spinner"></i>
+          <span>Comparing...</span>
+          } @else {
+          <i class="pi pi-play-circle"></i>
+          <span>Compare All Models</span>
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Response Order Section -->
+  @if (responseOrder().length > 0) {
+  <div class="response-order-section">
+    <div class="response-order-card">
+      <h3><i class="pi pi-trophy"></i> Response Order</h3>
+      <ol class="response-order-list">
+        @for (modelId of responseOrder(); track modelId; let i = $index) {
+        <li [style.color]="getModelByIndex(i).color">
+          <img [src]="getModelByIndex(i).iconImage" [alt]="getModelByIndex(i).name" class="model-icon-img" />
+          {{ getModelByIndex(i).name }}
+          @if (i === 0) {
+          <span class="fastest-badge">Fastest</span>
+          }
+        </li>
+        }
+      </ol>
+    </div>
+  </div>
+  }
+
+  <!-- Model Cards Grid -->
+  <div class="model-grid">
+    @for (model of models; track model.id) {
+    <div class="model-card" [style.--model-color]="model.color" [class.fastest]="isFirstResponder(model.id)">
+      <div class="model-header">
+        <div class="model-title">
+          <img [src]="model.iconImage" [alt]="model.name" class="model-icon-img" />
+          <h2>{{ model.name }}</h2>
+        </div>
+        @if (hasResponded(model.id)) {
+        <span class="position-badge" [style.backgroundColor]="model.color">
+          #{{ getResponsePosition(model.id) }}
+        </span>
+        }
+      </div>
+
+      <div class="response-area">
+        <div class="response-label">
+          <i class="pi pi-file-edit"></i>
+          <span>Response</span>
+        </div>
+        <div class="response-content">
+          @if (loading()[model.id]) {
+          <div class="loading-container">
+            <p-progressSpinner strokeWidth="4" [style]="{ width: '40px', height: '40px' }" />
+            <span>Generating response...</span>
+          </div>
+          } @else if (responses()[model.id]) {
+          <div class="response-text">{{ responses()[model.id] }}</div>
+          } @else {
+          <div class="placeholder-text">
+            <i class="pi pi-inbox"></i>
+            <span>Response will appear here</span>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>© 2026 Ankur. All rights reserved.</p>
+  </footer>
+</div>

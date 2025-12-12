@@ -1,0 +1,137 @@
+/* Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* CSS Custom Properties - Light Theme (Default) */
+:root,
+[data-theme="light"] {
+    /* Background Colors */
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --content-bg: #f1f5f9;
+    --input-bg: #ffffff;
+
+    /* Text Colors */
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+
+    /* Accent Colors */
+    --accent-color: #8b5cf6;
+    --accent-shadow: rgba(139, 92, 246, 0.2);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #8b5cf6, #a855f7, #d946ef);
+    --gradient-bg: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #fae8ff 100%);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    /* Background Colors */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --glass-bg: rgba(30, 41, 59, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --content-bg: #1e293b;
+    --input-bg: #1e293b;
+
+    /* Text Colors */
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+
+    /* Accent Colors */
+    --accent-color: #a78bfa;
+    --accent-shadow: rgba(167, 139, 250, 0.3);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #a78bfa, #c084fc, #e879f9);
+    --gradient-bg: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #4c1d95 100%);
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* PrimeNG Theme Customizations */
+.p-button {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.p-button.p-button-text {
+    color: var(--text-primary) !important;
+}
+
+.p-button.p-button-text:hover {
+    background: var(--glass-bg) !important;
+}
+
+.p-inputtextarea {
+    font-family: 'Inter', sans-serif !important;
+}
+
+.p-progressspinner-circle {
+    stroke: var(--accent-color) !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--content-bg);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 4px;
+    opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-primary);
+}
+
+/* Selection Styling */
+::selection {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* Focus Outline for Accessibility */
+:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Smooth Theme Transition */
+*,
+*::before,
+*::after {
+    transition-property: background-color, border-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+}
