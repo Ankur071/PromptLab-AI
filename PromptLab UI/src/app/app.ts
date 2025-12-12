@@ -2,11 +2,8 @@ import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Button } from 'primeng/button';
-import { Card } from 'primeng/card';
 import { Textarea } from 'primeng/textarea';
 import { ProgressSpinner } from 'primeng/progressspinner';
-import { Badge } from 'primeng/badge';
-import { Tooltip } from 'primeng/tooltip';
 import { ThemeService } from './services/theme.service';
 import { LlmService } from './services/llm.service';
 import { LlmModel } from './models/model.interface';
@@ -17,11 +14,8 @@ import { LlmModel } from './models/model.interface';
     CommonModule,
     FormsModule,
     Button,
-    Card,
     Textarea,
-    ProgressSpinner,
-    Badge,
-    Tooltip
+    ProgressSpinner
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
